@@ -1,0 +1,50 @@
+# Shortcuts
+alias reloadshell="source $HOME/.zshrc"
+alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
+alias c="clear"
+
+# MAC OS 
+
+## Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+## Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+## flush the DNS cache
+alias flush="dscacheutil -flushcache"
+
+alias cht="sh ~/cht.sh"
+
+# Programs
+alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
+
+# Python
+alias penv='python3 -m venv venv'
+alias psource='source venv/bin/activate'
+alias pinstalldev='pip install -r requirements-dev.txt'
+alias pinstall='pip install -r requirements.txt'
+alias upgradepip='pip install --upgrade pip'
+
+# Git
+alias amend="git add . && git commit --amend --no-edit"
+alias commit="git add . && git commit -m"
+alias diff="git diff"
+alias force="git push --force"
+alias nuke="git clean -df && git reset --hard"
+alias pop="git stash pop"
+alias pull="git pull"
+alias push="git push"
+alias resolve="git add . && git commit --no-edit"
+alias stash="git stash -u"
+alias unstage="git restore --staged ."
+alias wip="commit wip"
+alias compile="commit 'compile'"
+alias version="commit 'version'"
+
+
+## Remove zsh duf alias 
+unalias duf 
