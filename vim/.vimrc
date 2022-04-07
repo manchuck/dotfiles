@@ -1,5 +1,5 @@
 set nocompatible              " be iMproved, required
-set encoding=utf-8            " Make sure we are always using utf-8
+set encoding=utf-8 nobomb     " Make sure we are always using utf-8
 filetype off                  " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -57,8 +57,6 @@ set path+=**                    " Searches current directory recursively.
 set wildmenu                    " Display all matches when tab complete.
 set incsearch                   " Incremental search
 set hidden                      " Needed to keep multiple buffers open
-set nobackup                    " No auto backups
-set noswapfile                  " No swap
 set t_Co=256                    " Set if term supports 256 colors.
 set number relativenumber       " Display line numbers
 syntax enable                   " Enable syntax highliting
@@ -66,6 +64,14 @@ let g:rehash256 = 1
 set number                      " Turn on line numbers
 set autowrite                   " Turn on autowrite 
 colorscheme Tomorrow-Night      " Set theme
+set expandtab                   " Make tabs into spaces (set by tabstop)
+set backspace=indent,eol,start  " Allow backspace in insert mode
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+	set undodir=~/.vim/undo
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""  = > Wildignore settings 
