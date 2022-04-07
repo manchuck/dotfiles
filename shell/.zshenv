@@ -1,4 +1,5 @@
 # General 
+export PATH="$HOME/bin:$PATH:/usr/local/bin";
 export NVM_DIR=~/.nvm
 export PROJECT_PATHS=(Projects/niagara/services ~/Projects/niagara/packages ~/Projects ~/Projects/saber ~/Projects/manchuck ~/Projects/zones ~/Documents/brains)
 export TZ=UTC
