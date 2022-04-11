@@ -5,6 +5,8 @@ alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
 
 # MAC OS 
+alias vim=/usr/local/bin/vim
+alias mysql=/usr/local/bin/mycli
 
 ## Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"

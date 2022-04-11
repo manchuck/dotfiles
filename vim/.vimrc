@@ -72,6 +72,11 @@ set directory=~/.vim/swaps
 if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
+" Skip terminal buffers
+augroup termIgnore
+    autocmd!
+    autocmd TerminalOpen * set nobuflisted
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""  = > Wildignore settings 
