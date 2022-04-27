@@ -9,7 +9,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/plugged')
 "{{ The Basics }}
      Plugin 'gmarik/Vundle.vim'                           " Vundle
-     Plugin 'iamcco/markdown-preview.nvim'                " Markdown Preview
+     Plugin 'JamshedVesuna/vim-markdown-preview'          " Markdown Preview
      Plugin 'itchyny/lightline.vim'                       " Lightline statusbar
      Plugin 'frazrepo/vim-rainbow'                        " Rainbow brackets
      Plugin 'editorconfig/editorconfig-vim'               " Editor config
@@ -19,15 +19,16 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
     Plugin 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
     Plugin 'junegunn/fzf.vim'                            " Fuzzy command finder
-    
+
 "{{ Productivity }}
-    Plugin 'vimwiki/vimwiki'                             " VimWiki 
+    Plugin 'vimwiki/vimwiki'                             " VimWiki
     Plugin 'jreybert/vimagit'                            " Magit-like plugin for vim
     Plugin 'mg979/vim-visual-multi'                      " Visual Block
     Plugin 'ycm-core/YouCompleteMe'                      " Auto completion
     Plugin 'dense-analysis/ale'                          " Auto linter
     Plugin 'airblade/vim-gitgutter'                      " Show git diff
     Plugin 'tpope/vim-fugitive'                          " Git fugative
+    Plugin 'zivyangll/git-blame.vim'                     " Git Blame
     Plugin 'tpope/vim-surround'                          " Vim surrouand
     Plugin 'tpope/vim-sensible'                          " Sensible defaults
     Plugin 'tpope/vim-capslock'                          " Software caps lock
@@ -53,6 +54,9 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use Grip for markdown preview
+let vim_markdown_preview_github=1
+set cursorline                  " Sets highliting the cursor line
 set path+=**                    " Searches current directory recursively.
 set wildmenu                    " Display all matches when tab complete.
 set incsearch                   " Incremental search
@@ -62,7 +66,7 @@ set number relativenumber       " Display line numbers
 syntax enable                   " Enable syntax highliting
 let g:rehash256 = 1
 set number                      " Turn on line numbers
-set autowrite                   " Turn on autowrite 
+set autowrite                   " Turn on autowrite
 colorscheme Tomorrow-Night      " Set theme
 set expandtab                   " Make tabs into spaces (set by tabstop)
 set backspace=indent,eol,start  " Allow backspace in insert mode
@@ -78,8 +82,19 @@ augroup termIgnore
     autocmd TerminalOpen * set nobuflisted
 augroup END
 
+" Press \\ to jump back to the last cursor position.
+nnoremap <leader>\ ``
+set colorcolumn=80,120          " Adds guide lines at 80 and 120 characters
+" Maps Ctrl+i to insert one character
+nnoremap <C-i> i_<Esc>r
+set tags=tags
+
+" Shift Enter to create new line then exit
+nmap <S-Enter> O<Esc>
+" Shift space to create space then exit insert
+nmap <S-Space> i<Space><Esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""  = > Wildignore settings 
+""  = > Wildignore settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildignore+=*/node_modules/*
 set wildignore+=_site
@@ -117,7 +132,8 @@ set laststatus=2
 
 " Uncomment to prevent non-normal modes showing in powerline and below powerline.
 set noshowmode
-
+" Git Blame in vim
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -140,7 +156,7 @@ map <Leader>md :InstantMarkdownPreview<CR>
 map <Leader>ms :InstantMarkdownStop<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDTree 
+" => NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '►'
@@ -153,13 +169,18 @@ let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=35
 let NERDTreeQuitOnOpen=1
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
             \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
 " Open nerdtree window on opening Vim
-autocmd VimEnter * NERDTree 
+autocmd VimEnter * NERDTree
 " Refresh the current folder if any changes
-autocmd BufEnter NERD_tree_* | execute 'normal R'    
+autocmd BufEnter NERD_tree_* | execute 'normal R'
 au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
 
 "Close nerd tree when its the only buffer open
@@ -170,6 +191,13 @@ augroup DIRCHANGE
     autocmd DirChanged global :NERDTreeCWD
 augroup END
 
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+            \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
 " remap some commands
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -179,3 +207,21 @@ nnoremap <C-f> :NERDTreeFind<CR>
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ALE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters = {
+            \ 'python': ['pylint'],
+            \ 'javascript': ['eslint'],
+            \ 'go': ['gobuild', 'gofmt'],
+            \ 'rust': ['rls']
+            \}
+let g:ale_fixers = {
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'python': ['autopep8'],
+            \ 'javascript': ['eslint'],
+            \ 'go': ['gofmt', 'goimports'],
+            \ 'rust': ['rustfmt']
+            \}
+let g:ale_fix_on_save = 1
