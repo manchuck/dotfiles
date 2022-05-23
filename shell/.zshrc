@@ -145,3 +145,5 @@ source $HOME/.zsh_alias
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source <(kubectl completion zsh)
+eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"

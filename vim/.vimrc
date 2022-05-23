@@ -32,13 +32,17 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'tpope/vim-surround'                          " Vim surrouand
     Plugin 'tpope/vim-sensible'                          " Sensible defaults
     Plugin 'tpope/vim-capslock'                          " Software caps lock
+    Plugin 'python-mode/python-mode'                     " Python mode
+    Plugin 'bkad/CamelCaseMotion'                        " Camel Case Motion
 
 "{{ Syntax Highlighting and Colors }}
+    Plugin 'Vimjas/vim-python-pep8-indent'               " Python indent
     Plugin 'PotatoesMaster/i3-vim-syntax'                " i3 config highlighting
     Plugin 'kovetskiy/sxhkd-vim'                         " sxhkd highlighting
     Plugin 'vim-python/python-syntax'                    " Python highlighting
     Plugin 'ap/vim-css-color'                            " Color previews for CSS
     Plugin 'Yggdroot/indentLine'                         " Show tab indents
+    Plugin 'Chiel92/vim-autoformat'                      " Autoformat files
 
 "{{ Junegunn Choi Plugins }}
     Plugin 'junegunn/goyo.vim'                           " Distraction-free viewing
@@ -54,7 +58,12 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set iskeyword-=_                " Use _ for motions
 " Use Grip for markdown preview
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+
 let vim_markdown_preview_github=1
 set cursorline                  " Sets highliting the cursor line
 set path+=**                    " Searches current directory recursively.
@@ -93,6 +102,8 @@ set tags=tags
 nmap <S-Enter> O<Esc>
 " Shift space to create space then exit insert
 nmap <S-Space> i<Space><Esc>
+let g:python3_host_prog="/usr/local/bin/python"
+let NERDTreeRespectWildIgnore=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""  = > Wildignore settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,6 +129,7 @@ set wildignore+=*/.log
 set wildignore+=*/.ist
 set wildignore+=*/.fdb_latexmk
 set wildignore+=*.git/
+set wildignore+=*.egg-info/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status Line
@@ -225,3 +237,4 @@ let g:ale_fixers = {
             \ 'rust': ['rustfmt']
             \}
 let g:ale_fix_on_save = 1
+let g:ale_virtualenv_dir_names = []
