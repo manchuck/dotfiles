@@ -1,5 +1,7 @@
 set nocompatible              " be iMproved, required
 set encoding=utf-8 nobomb     " Make sure we are always using utf-8
+set background=dark
+" let g:solarized_termcolors=256
 filetype off                  " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -52,6 +54,10 @@ call vundle#begin('~/.vim/plugged')
 " {{ Training }}
     Plugin 'wikitopian/hardmode'                         " Hard mode
 
+" {{ Theme }}
+    Plugin 'altercation/vim-colors-solarized'            " Powerline 10k
+
+
 call vundle#end()
 filetype plugin indent on    " required
 
@@ -76,7 +82,7 @@ syntax enable                   " Enable syntax highliting
 let g:rehash256 = 1
 set number                      " Turn on line numbers
 set autowrite                   " Turn on autowrite
-colorscheme Tomorrow-Night      " Set theme
+colorscheme solarized           " Set theme
 set expandtab                   " Make tabs into spaces (set by tabstop)
 set backspace=indent,eol,start  " Allow backspace in insert mode
 " Centralize backups, swapfiles and undo history
@@ -224,7 +230,7 @@ map <leader>nf :NERDTreeFind<cr>
 " => ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-            \ 'python': ['pylint'],
+            \ 'python': ['flake8'],
             \ 'javascript': ['eslint'],
             \ 'go': ['gobuild', 'gofmt'],
             \ 'rust': ['rls']
@@ -237,4 +243,6 @@ let g:ale_fixers = {
             \ 'rust': ['rustfmt']
             \}
 let g:ale_fix_on_save = 1
-let g:ale_virtualenv_dir_names = []
+let g:ale_virtualenv_dir_names = ["venv"]
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)

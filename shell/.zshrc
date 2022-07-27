@@ -15,8 +15,8 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="agnoster"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,7 +77,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git osx docker cp history github gitignore gulp aws common-aliases copydir copyfile dirhistory encode64 git-flow httpie jira jsontools npm node nvm pj rsync urltools web-search yarn )
-plugins=(aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash dirhistory docker docker-compose docker-machine emotty encode64 git git-flow github gitignore history jsontools node npm macos python pep8 pip pipenv pj python rsync urltools web-search yarn zsh-interactive-cd )
+plugins=(aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash dirhistory docker docker-compose docker-machine emotty encode64 git git-flow github gitignore history jsontools node npm macos python pep8 pip pipenv pj python rsync urltools web-search yarn zsh-interactive-cd kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -147,3 +147,5 @@ source $HOME/.zsh_alias
 source <(kubectl completion zsh)
 eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
+
+export PATH="$HOME/.poetry/bin:$PATH"
