@@ -55,7 +55,7 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'wikitopian/hardmode'                         " Hard mode
 
 " {{ Theme }}
-    Plugin 'altercation/vim-colors-solarized'            " Powerline 10k
+    Plugin 'arcticicestudio/nord-vim'                    " Nord
 
 
 call vundle#end()
@@ -82,7 +82,7 @@ syntax enable                   " Enable syntax highliting
 let g:rehash256 = 1
 set number                      " Turn on line numbers
 set autowrite                   " Turn on autowrite
-colorscheme solarized           " Set theme
+colorscheme nord                " Set theme
 set expandtab                   " Make tabs into spaces (set by tabstop)
 set backspace=indent,eol,start  " Allow backspace in insert mode
 " Centralize backups, swapfiles and undo history
