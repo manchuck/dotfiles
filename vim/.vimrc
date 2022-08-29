@@ -36,6 +36,10 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'tpope/vim-capslock'                          " Software caps lock
     Plugin 'python-mode/python-mode'                     " Python mode
     Plugin 'bkad/CamelCaseMotion'                        " Camel Case Motion
+    Plugin 'ap/vim-buftabline'                           " Vim Buffline
+    Plugin 'tpope/vim-commentary'                        " Commentary
+    Plugin 'tpope/vim-jdaddy'                            " JSON Daddy
+    Plugin 'tpope/vim-speeddating'                       " Adjust dates
 
 "{{ Syntax Highlighting and Colors }}
     Plugin 'Vimjas/vim-python-pep8-indent'               " Python indent
@@ -45,6 +49,7 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'ap/vim-css-color'                            " Color previews for CSS
     Plugin 'Yggdroot/indentLine'                         " Show tab indents
     Plugin 'Chiel92/vim-autoformat'                      " Autoformat files
+    Plugin 'neoclide/coc'                                " Concoure of Completeion
 
 "{{ Junegunn Choi Plugins }}
     Plugin 'junegunn/goyo.vim'                           " Distraction-free viewing
@@ -64,6 +69,7 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap ;; <Esc>
 set iskeyword-=_                " Use _ for motions
 " Use Grip for markdown preview
 let &t_SI.="\e[5 q" "SI = INSERT mode
@@ -246,3 +252,8 @@ let g:ale_fix_on_save = 1
 let g:ale_virtualenv_dir_names = ["venv"]
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Sweet Sweet FuGITive
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gs :G<CR>

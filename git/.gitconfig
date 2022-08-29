@@ -1,7 +1,7 @@
 [user]
 	name = Chuck "MANCHUCK" Reeves
 	email = chuck@manchuck.com
-	signingkey = 2AA9CA671CCBA2CA
+	signingkey = 52209D9263F5A358
 
 [includeIf "gitdir:~/Projects/saber/"]
   path = ~/.gitconfig_saber

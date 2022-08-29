@@ -4,10 +4,6 @@ alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
 
-# MAC OS 
-alias vim=/usr/local/bin/vim
-alias mysql=/usr/local/bin/mycli
-
 ## Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
@@ -24,14 +20,14 @@ alias cht="sh ~/cht.sh"
 # Programs
 alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
-# Python
+## Python
 alias penv='python3 -m venv venv'
 alias psource='source venv/bin/activate'
 alias pinstalldev='pip install -r requirements-dev.txt'
 alias pinstall='pip install -r requirements.txt'
 alias upgradepip='pip install --upgrade pip'
 
-# Git
+## Git
 alias amend="git add . && git commit --amend --no-edit"
 alias commit="git add . && git commit -m"
 alias diff="git diff"
@@ -47,6 +43,7 @@ alias wip="commit wip"
 alias compile="commit 'compile'"
 alias version="commit 'version'"
 
+alias ll="ls -al"
 
-## Remove zsh duf alias 
-unalias duf 
+## Remove zsh duf alias
+unalias duf
