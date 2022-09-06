@@ -149,4 +149,4 @@ eval "$(pyenv init -)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

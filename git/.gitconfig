@@ -3,11 +3,6 @@
 	email = chuck@manchuck.com
 	signingkey = 52209D9263F5A358
 
-[includeIf "gitdir:~/Projects/saber/"]
-  path = ~/.gitconfig_saber
-[includeIf "gitdir:~/Projects/zones/"]
-  path = ~/.gitconfig_zones
-
 [core]
 	excludesFile = ~/.gitignore_global
 	attributesfile = ~/.gitattributes

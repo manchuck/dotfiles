@@ -107,3 +107,18 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 .env
+
+
+#########
+## Vim ##
+#########
+
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+Session.vim
+tags
+.netrwhist
+*~
+[._]*.un~

@@ -61,6 +61,7 @@ call vundle#begin('~/.vim/plugged')
 
 " {{ Theme }}
     Plugin 'arcticicestudio/nord-vim'                    " Nord
+    Plugin 'mhinz/vim-startify'                          " Start Screen
 
 
 call vundle#end()
