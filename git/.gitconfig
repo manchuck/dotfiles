@@ -19,6 +19,7 @@
 	untrackedCache = true
 [pull]
 	ff = only
+	grebase = true
 [commit]
 	gpgsign = true
 [push]
@@ -29,3 +30,11 @@
 	log = true
 [credential]
 	helper = osxkeychain
+[inti]
+	defaultBranch = main
+[init]
+	defaultBranch = main
+[rebase]
+	autoStash = true
+[alias]
+	enforce = push --force-with-lease

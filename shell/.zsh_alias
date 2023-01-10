@@ -3,6 +3,7 @@ alias reloadshell="source $HOME/.zshrc"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
+alias starw="telnet towel.blinkenlights.nl"
 
 ## Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -17,8 +18,12 @@ alias flush="dscacheutil -flushcache"
 
 alias cht="sh ~/cht.sh"
 
-# Programs
+## Programs
 alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
+alias brave='open -a "Brave Browser.app"'
+eval $(thefuck --alias)
+## Node
+alias ncu="npx npm-check-updates"
 
 ## Python
 alias penv='python3 -m venv venv'
@@ -46,4 +51,4 @@ alias version="commit 'version'"
 alias ll="ls -al"
 
 ## Remove zsh duf alias
-unalias duf
+# unalias duf

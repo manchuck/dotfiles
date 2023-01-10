@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -77,7 +79,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git osx docker cp history github gitignore gulp aws common-aliases copydir copyfile dirhistory encode64 git-flow httpie jira jsontools npm node nvm pj rsync urltools web-search yarn )
-plugins=(aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash dirhistory docker docker-compose docker-machine emotty encode64 git git-flow github gitignore history jsontools node npm macos python pep8 pip pipenv pj python rsync urltools web-search yarn zsh-interactive-cd kubectl zsh-autosuggestions)
+plugins=(aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash emotty github gitignore history jsontools node npm macos python pep8 pip pj python rsync yarn zsh-interactive-cd kubectl zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -150,3 +152,12 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.poetry/bin:$PATH"
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/manchuck/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
