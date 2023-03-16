@@ -38,3 +38,5 @@
 	autoStash = true
 [alias]
 	enforce = push --force-with-lease
+[gpg]
+	program = /usr/local/bin/gpg

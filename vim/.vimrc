@@ -287,3 +287,9 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 " => CameCaseMotions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => You complete me
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>gt :YcmCompleter GoTo<CR>
+map <leader>yf :YcmCompleter FixIt<CR>
