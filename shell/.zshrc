@@ -110,7 +110,6 @@ source $ZSH/oh-my-zsh.sh
 
 #source $HOME/.zsh_alias
 
-
 source $(brew --prefix nvm)/nvm.sh
 
 # tabtab source for serverless package
@@ -140,12 +139,8 @@ autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
 export PATH="/usr/local/opt/python@3.10/bin:$PATH"
-source $HOME/.zsh_secrets
-source $HOME/.zsh_alias
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source <(kubectl completion zsh)
 eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
 
@@ -158,7 +153,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/manchuck/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+source $HOME/.zsh_secrets
+source $HOME/.zsh_alias
+
 #zprof
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
