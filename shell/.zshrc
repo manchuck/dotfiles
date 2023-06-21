@@ -145,6 +145,8 @@ eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="/opt/homebrew/bin/python3:$PATH"
+
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -155,6 +157,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 source $HOME/.zsh_secrets
 source $HOME/.zsh_alias
+source $HOME/.zshenv
 
 #zprof
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
