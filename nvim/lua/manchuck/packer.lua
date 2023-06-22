@@ -67,4 +67,5 @@ return require('packer').startup(function(use)
 
   use {"prettier/vim-prettier"}
 
+  use {"editorconfig/editorconfig-vim"}
 end)

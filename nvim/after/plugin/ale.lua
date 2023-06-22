@@ -1,5 +1,4 @@
-vim.g.ale_fix_on_save = 0 
-
+vim.g.ale_fix_on_save = 1 
 
 vim.cmd([[
 let g:ale_linters = {
