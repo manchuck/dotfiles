@@ -28,7 +28,7 @@ alias reloadshell="source $HOME/.zshrc"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
-alias ll="ls -al"
+alias ll="ls -alhFGP"
 
 ## Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"

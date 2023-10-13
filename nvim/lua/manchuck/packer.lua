@@ -13,6 +13,89 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use {'folke/neodev.nvim'}
+  -- Git related plugins
+  use {'tpope/vim-fugitive'}
+  use {'tpope/vim-rhubarb'}
+
+  -- Detect tabstop and shiftwidth automatically
+  use {'tpope/vim-sleuth'}
+
+  -- NOTE: This is where your plugins related to LSP can be installed.
+  --  The configuration is done below. Search for lspconfig to find it below.
+  use {
+    -- LSP Configuration & Plugins
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      -- Automatically install LSPs to stdpath for neovim
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+
+      -- Useful status updates for LSP
+      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+
+      -- Additional lua configuration, makes nvim stuff amazing!
+      'folke/neodev.nvim',
+    },
+  }
+
+  use {
+    -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      -- Snippet Engine & its associated nvim-cmp source
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+
+      -- Adds LSP completion capabilities
+      'hrsh7th/cmp-nvim-lsp',
+
+      -- Adds a number of user-friendly snippets
+      'rafamadriz/friendly-snippets',
+    },
+  }
+
+  -- Useful plugin to show you pending keybinds.
+  use { 'folke/which-key.nvim', opts = {} }
+  use {
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      -- See `:help gitsigns.txt`
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+      on_attach = function(bufnr)
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+      end,
+    },
+  }
+
+  -- Octo vim
+  use {
+      'pwntester/octo.nvim',
+      dependencies = {
+          'nvim-lua/plenary.nvim',
+          'nvim-telescope/telescope.nvim',
+          'nvim-tree/nvim-web-devicons',
+      },
+      config = function()
+          require("octo").setup({ enable_builtin = true })
+          vim.cmd([[hi OctoEditable guibg=none]])
+      end,
+      keys = {
+          { "<leader>O", "<cmd>Octo<cr>", desc = "Octo" },
+      }
+  }
+
+
   -- Nord Vim
   use ({
     'arcticicestudio/nord-vim',
@@ -22,11 +105,9 @@ return require('packer').startup(function(use)
     end
   })
 
-  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
-  use ('theprimeagen/harpoon')
-  use("mbbill/undotree")
-  use("tpope/vim-fugitive")
+  use {'theprimeagen/harpoon'}
+  use {'mbbill/undotree'}
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -50,22 +131,37 @@ return require('packer').startup(function(use)
     }
   }
   use {
-    "ThePrimeagen/refactoring.nvim",
+    'ThePrimeagen/refactoring.nvim',
     requires = {
-      {"nvim-lua/plenary.nvim"},
-      {"nvim-treesitter/nvim-treesitter"}
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-treesitter/nvim-treesitter'}
     }
   }
 
-  use {"bkad/CamelCaseMotion"}
+  use {'bkad/CamelCaseMotion'}
 
-  use {"dense-analysis/ale"}
+  use {'dense-analysis/ale'}
 
-  use {"airblade/vim-gitgutter"}
+  use {'airblade/vim-gitgutter'}
 
-  use {"itchyny/lightline.vim"}
+  use {'prettier/vim-prettier'}
 
-  use {"prettier/vim-prettier"}
+  use {'editorconfig/editorconfig-vim'}
 
-  use {"editorconfig/editorconfig-vim"}
+  use {
+    'akinsho/bufferline.nvim',
+    tag = '*',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('bufferline').setup {
+        options = {
+          mode = 'buffers', -- set to 'tabs' to only show tabpages instead
+          always_show_bufferline = true, -- show bufferline only when more than 1 buffer is present
+          numbers = 'both',
+        },
+      }
+    end
+  }
+
+  use { 'nelsyeung/twig.vim' }
 end)

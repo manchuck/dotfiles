@@ -89,6 +89,12 @@ _G.packer_plugins = {
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/ale",
     url = "https://github.com/dense-analysis/ale"
   },
+  ["bufferline.nvim"] = {
+    config = { "\27LJ\2\n„\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\3\fnumbers\tboth\27always_show_bufferline\2\tmode\fbuffers\nsetup\15bufferline\frequire\0" },
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -124,15 +130,15 @@ _G.packer_plugins = {
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
-  },
-  ["lightline.vim"] = {
-    loaded = true,
-    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/lightline.vim",
-    url = "https://github.com/itchyny/lightline.vim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -148,6 +154,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["neodev.nvim"] = {
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
   },
   ["nord-vim"] = {
     config = { "\27LJ\2\n4\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0" },
@@ -170,6 +181,11 @@ _G.packer_plugins = {
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -190,6 +206,11 @@ _G.packer_plugins = {
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["twig.vim"] = {
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/twig.vim",
+    url = "https://github.com/nelsyeung/twig.vim"
+  },
   undotree = {
     loaded = true,
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/undotree",
@@ -209,6 +230,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/vim-prettier",
     url = "https://github.com/prettier/vim-prettier"
+  },
+  ["vim-rhubarb"] = {
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
+    url = "https://github.com/tpope/vim-rhubarb"
+  },
+  ["vim-sleuth"] = {
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/vim-sleuth",
+    url = "https://github.com/tpope/vim-sleuth"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
@@ -217,6 +253,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for nord-vim]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0", "config", "nord-vim")
 time([[Config for nord-vim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+try_loadstring("\27LJ\2\n„\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\3\fnumbers\tboth\27always_show_bufferline\2\tmode\fbuffers\nsetup\15bufferline\frequire\0", "config", "bufferline.nvim")
+time([[Config for bufferline.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

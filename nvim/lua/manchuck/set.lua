@@ -1,4 +1,4 @@
-
+vim.o.hlsearch = false
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -40,7 +40,10 @@ vim.opt.cursorline = true
 
 vim.opt.autowrite = true
 
-vim.opt.showmode = false 
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+vim.opt.showmode = false
 
 vim.cmd([[
 let g:lightline = {
@@ -54,4 +57,3 @@ let g:lightline = {
   \ }
   \ }
 ]])
-

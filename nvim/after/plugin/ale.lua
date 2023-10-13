@@ -1,4 +1,4 @@
-vim.g.ale_fix_on_save = 1 
+vim.g.ale_fix_on_save = 1
 
 vim.cmd([[
 let g:ale_linters = {
@@ -6,7 +6,8 @@ let g:ale_linters = {
 \ 'javascript': ['eslint'],
 \ 'typescript': ['eslint'],
 \ 'go': ['gobuild', 'gofmt'],
-\ 'rust': ['rls']
+\ 'rust': ['rls'],
+\ 'html': ['htmlhint', 'html-beautify'],
 \}
 ]])
 vim.cmd([[
@@ -19,8 +20,6 @@ let g:ale_fixers = {
 \ 'rust': ['rustfmt']
 \}
 ]])
-
-
 
 vim.keymap.set('n', '<leader>aj', vim.cmd.ALENext)
 vim.keymap.set('n', '<leader>ak', vim.cmd.ALEPrevious)

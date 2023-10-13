@@ -79,7 +79,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash emotty github gitignore history jsontools node npm macos python pep8 pip pj python rsync yarn zsh-interactive-cd zsh-autosuggestions)
+plugins=(git aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash emotty github gitignore history jsontools node npm macos python pep8 pip pj python rsync yarn zsh-interactive-cd zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
