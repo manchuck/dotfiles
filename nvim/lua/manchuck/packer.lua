@@ -102,18 +102,29 @@ return require('packer').startup({function(use)
       "tpope/vim-rhubarb",
     },
     config = function()
-        -- optional: setup telescope before loading the extension
         require("telescope").setup{
-            -- move this to the place where you call the telescope setup function
             extensions = {
                 advanced_git_search = {
-                    -- Insert Config here
                 }
             }
         }
 
         require("telescope").load_extension("advanced_git_search")
     end,
+  }
+
+
+  -- Neoclip
+  use {
+    'AckslD/nvim-neoclip.lua',
+    requires = {
+      'nvim-telescope/telescope.nvim',
+      'ibhagwan/fzf-lua',
+      },
+      config = function()
+        require('neoclip').setup()
+        require('telescope').load_extension('neoclip')
+      end,
   }
 
   -- Nord Vim
