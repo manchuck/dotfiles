@@ -3,7 +3,7 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+return require('packer').startup({function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -93,6 +93,28 @@ return require('packer').startup(function(use)
       end,
   }
 
+  -- Advanced Git Search
+  use {
+    'aaronhallaert/advanced-git-search.nvim',
+    requires = {
+      "nvim-telescope/telescope.nvim",
+      "tpope/vim-fugitive",
+      "tpope/vim-rhubarb",
+    },
+    config = function()
+        -- optional: setup telescope before loading the extension
+        require("telescope").setup{
+            -- move this to the place where you call the telescope setup function
+            extensions = {
+                advanced_git_search = {
+                    -- Insert Config here
+                }
+            }
+        }
+
+        require("telescope").load_extension("advanced_git_search")
+    end,
+  }
 
   -- Nord Vim
   use ({
@@ -162,4 +184,12 @@ return require('packer').startup(function(use)
   }
 
   use { 'nelsyeung/twig.vim' }
-end)
+end,
+config = {
+    display= {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
+  }
+})

@@ -84,6 +84,12 @@ _G.packer_plugins = {
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["advanced-git-search.nvim"] = {
+    config = { "\27LJ\2\n—\1\0\0\5\0\b\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0005\3\3\0004\4\0\0=\4\4\3=\3\6\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\a\0'\2\4\0B\0\2\1K\0\1\0\19load_extension\15extensions\1\0\0\24advanced_git_search\1\0\0\nsetup\14telescope\frequire\0" },
+    loaded = true,
+    path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/advanced-git-search.nvim",
+    url = "https://github.com/aaronhallaert/advanced-git-search.nvim"
+  },
   ale = {
     loaded = true,
     path = "/Users/manchuck/.local/share/nvim/site/pack/packer/start/ale",
@@ -255,14 +261,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nord-vim
-time([[Config for nord-vim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0", "config", "nord-vim")
-time([[Config for nord-vim]], false)
 -- Config for: bufferline.nvim
 time([[Config for bufferline.nvim]], true)
 try_loadstring("\27LJ\2\n„\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\3\27always_show_bufferline\2\fnumbers\tboth\tmode\fbuffers\nsetup\15bufferline\frequire\0", "config", "bufferline.nvim")
 time([[Config for bufferline.nvim]], false)
+-- Config for: nord-vim
+time([[Config for nord-vim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0", "config", "nord-vim")
+time([[Config for nord-vim]], false)
+-- Config for: advanced-git-search.nvim
+time([[Config for advanced-git-search.nvim]], true)
+try_loadstring("\27LJ\2\n—\1\0\0\5\0\b\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0005\3\3\0004\4\0\0=\4\4\3=\3\6\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\a\0'\2\4\0B\0\2\1K\0\1\0\19load_extension\15extensions\1\0\0\24advanced_git_search\1\0\0\nsetup\14telescope\frequire\0", "config", "advanced-git-search.nvim")
+time([[Config for advanced-git-search.nvim]], false)
 -- Config for: octo.nvim
 time([[Config for octo.nvim]], true)
 try_loadstring("\27LJ\2\nI\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\19enable_builtin\2\nsetup\tocto\frequire\0", "config", "octo.nvim")
