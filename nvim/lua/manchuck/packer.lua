@@ -9,8 +9,26 @@ return require('packer').startup({function(use)
 
   -- Telescope
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'debugloop/telescope-undo.nvim',
+    },
+    config = function()
+      require('telescope').setup({
+        extensions = {
+          undo = {
+            side_by_side = true,
+            layout_strategy = "vertical",
+            layout_config = {
+              preview_height = 0.8,
+            },
+          }
+        }
+      })
+      require('telescope').load_extension('undo')
+    end,
   }
 
   use {'folke/neodev.nvim'}
@@ -113,7 +131,6 @@ return require('packer').startup({function(use)
     end,
   }
 
-
   -- Neoclip
   use {
     'AckslD/nvim-neoclip.lua',
@@ -138,7 +155,6 @@ return require('packer').startup({function(use)
 
 
   use {'theprimeagen/harpoon'}
-  use {'mbbill/undotree'}
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -195,6 +211,7 @@ return require('packer').startup({function(use)
   }
 
   use { 'nelsyeung/twig.vim' }
+
 end,
 config = {
     display= {
