@@ -28,6 +28,8 @@ return require('packer').startup({function(use)
         }
       })
       require('telescope').load_extension('undo')
+      require("telescope").load_extension("advanced_git_search")
+      require('telescope').load_extension('neoclip')
     end,
   }
 
@@ -127,7 +129,6 @@ return require('packer').startup({function(use)
             }
         }
 
-        require("telescope").load_extension("advanced_git_search")
     end,
   }
 
@@ -140,7 +141,6 @@ return require('packer').startup({function(use)
       },
       config = function()
         require('neoclip').setup()
-        require('telescope').load_extension('neoclip')
       end,
   }
 
@@ -212,6 +212,12 @@ return require('packer').startup({function(use)
 
   use { 'nelsyeung/twig.vim' }
 
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
 end,
 config = {
     display= {

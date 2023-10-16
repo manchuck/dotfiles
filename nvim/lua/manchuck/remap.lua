@@ -24,3 +24,11 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+-- Split management
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Select left split" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Select lower split" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Select upper split" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Select right split" })
