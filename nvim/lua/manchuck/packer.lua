@@ -211,7 +211,11 @@ return require('packer').startup({function(use)
     requires = {
       "MunifTanjim/nui.nvim",
     }
-})
+  })
+
+  use ({
+    'mhinz/vim-startify',
+  })
 
 end,
 config = {
