@@ -33,7 +33,9 @@ return require('packer').startup({function(use)
     end,
   }
 
+  -- NVIM LUA API support
   use {'folke/neodev.nvim'}
+
   -- Git related plugins
   use {'tpope/vim-fugitive'}
 
@@ -43,8 +45,6 @@ return require('packer').startup({function(use)
   -- Detect tabstop and shiftwidth automatically
   use {'tpope/vim-sleuth'}
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
   -- LSP Configuration & Plugins
   use {
     'neovim/nvim-lspconfig',
@@ -222,15 +222,15 @@ return require('packer').startup({function(use)
   }
 
   -- Debug helper
-  use({
-    "piersolenski/wtf.nvim",
-    config = function()
-      require("wtf").setup()
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-    }
-  })
+--  use({
+--    "piersolenski/wtf.nvim",
+--    config = function()
+--      require("wtf").setup()
+--    end,
+--    requires = {
+--      "MunifTanjim/nui.nvim",
+--    }
+--  })
 
   -- Github Co Pilot
   use ({
@@ -243,8 +243,16 @@ return require('packer').startup({function(use)
   -- HTTP Codes
   use { 'barrett-ruth/telescope-http.nvim' }
 
-  -- Telescope Command line
-  use { 'jonarrien/telescope-cmdline.nvim' }
+  -- Noice
+  use {
+    'folke/noice.nvim',
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'folke/noice.nvim',
+      'rcarriga/nvim-notify',
+      'hrsh7th/nvim-cmp',
+    },
+  }
 
 end,
 config = {

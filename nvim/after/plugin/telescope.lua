@@ -1,7 +1,4 @@
 local builtin = require('telescope.builtin')
-require("telescope").load_extension("cmdline")
-
-
 
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
