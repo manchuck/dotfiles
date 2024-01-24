@@ -36,6 +36,8 @@ return require('packer').startup({function(use)
   use {'folke/neodev.nvim'}
   -- Git related plugins
   use {'tpope/vim-fugitive'}
+
+  -- Git hub for fugitive
   use {'tpope/vim-rhubarb'}
 
   -- Detect tabstop and shiftwidth automatically
@@ -43,8 +45,8 @@ return require('packer').startup({function(use)
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
+  -- LSP Configuration & Plugins
   use {
-    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -60,8 +62,8 @@ return require('packer').startup({function(use)
     },
   }
 
+  -- Autocompletion
   use {
-    -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
@@ -78,8 +80,9 @@ return require('packer').startup({function(use)
 
   -- Useful plugin to show you pending keybinds.
   use { 'folke/which-key.nvim', opts = {} }
+
+  -- Adds git releated signs to the gutter, as well as utilities for managing changes
   use {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
   }
 
@@ -139,7 +142,15 @@ return require('packer').startup({function(use)
   })
 
 
-  use {'theprimeagen/harpoon'}
+  use {
+    'theprimeagen/harpoon',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-lua/popup.nvim'},
+    },
+  }
+
+  -- Easy LSP setup
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -162,6 +173,8 @@ return require('packer').startup({function(use)
       {'rafamadriz/friendly-snippets'},
     }
   }
+
+  -- Refactoring plugin
   use {
     'ThePrimeagen/refactoring.nvim',
     requires = {
@@ -170,14 +183,19 @@ return require('packer').startup({function(use)
     }
   }
 
+  -- Allow CamelCase movement
   use {'bkad/CamelCaseMotion'}
 
+  -- Async lint engine
   use {'dense-analysis/ale'}
 
+  -- Git Gutter - Shows git changes in gutter
   use {'airblade/vim-gitgutter'}
 
+  -- Prettier
   use {'prettier/vim-prettier'}
 
+  -- EditorConfig
   use {'editorconfig/editorconfig-vim'}
 
   use {
@@ -195,16 +213,17 @@ return require('packer').startup({function(use)
     end
   }
 
-  use { 'nelsyeung/twig.vim' }
-
+  -- Easy comment
   use {
       'numToStr/Comment.nvim',
       config = function()
           require('Comment').setup()
       end
   }
+
+  -- Debug helper
   use({
-  "piersolenski/wtf.nvim",
+    "piersolenski/wtf.nvim",
     config = function()
       require("wtf").setup()
     end,
@@ -213,9 +232,19 @@ return require('packer').startup({function(use)
     }
   })
 
+  -- Github Co Pilot
   use ({
-    'mhinz/vim-startify',
+  'github/copilot.vim',
   })
+
+  -- Conventional Commits
+  use {'olacin/telescope-cc.nvim'}
+
+  -- HTTP Codes
+  use { 'barrett-ruth/telescope-http.nvim' }
+
+  -- Telescope Command line
+  use { 'jonarrien/telescope-cmdline.nvim' }
 
 end,
 config = {
