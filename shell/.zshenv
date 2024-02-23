@@ -8,3 +8,4 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PYENV_ROOT="/Users/manchuck/.pyenv"
 export WALK_EDITOR='nvim'
+. "$HOME/.cargo/env"
