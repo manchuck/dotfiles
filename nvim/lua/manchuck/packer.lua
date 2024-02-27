@@ -10,7 +10,7 @@ return require('packer').startup({function(use)
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    tag = '0.1.5',
     requires = {
       'nvim-lua/plenary.nvim',
       'debugloop/telescope-undo.nvim',
@@ -222,15 +222,15 @@ return require('packer').startup({function(use)
   }
 
   -- Debug helper
---  use({
---    "piersolenski/wtf.nvim",
---    config = function()
---      require("wtf").setup()
---    end,
---    requires = {
---      "MunifTanjim/nui.nvim",
---    }
---  })
+  use({
+    "piersolenski/wtf.nvim",
+    config = function()
+      require("wtf").setup()
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+    }
+  })
 
   -- Github Co Pilot
   use ({
