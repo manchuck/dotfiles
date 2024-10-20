@@ -10,3 +10,5 @@ vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc =
 
 
 vim.api.nvim_set_keymap('n', '<leader><leader>', ':silent Telescope cmdline<CR>', { noremap = true, desc = "Cmdline" })
+
+require('telescope').load_extension('noice')
