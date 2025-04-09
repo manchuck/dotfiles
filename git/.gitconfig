@@ -1,43 +1,61 @@
 [user]
-	name = Chuck "MANCHUCK" Reeves
-	email = chuck@manchuck.com
-	signingkey = 52209D9263F5A358
+  name = Chuck "MANCHUCK" Reeves
+  email = chuck@manchuck.com
+  signingkey = 52209D9263F5A358
 
 [core]
-	excludesFile = ~/.gitignore_global
-	attributesfile = ~/.gitattributes
-    # Make `git rebase` safer on macOS
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
+  excludesFile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes
+  # Make `git rebase` safer on macOS
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
 
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
 
-	# Speed up commands involving untracked files such as `git status`.
-	# https://git-scm.com/docs/git-update-index#_untracked_cache
-	untrackedCache = true
-	editor = nvim
+  # Speed up commands involving untracked files such as `git status`.
+  # https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
+  editor = nvim
+  pager = delta
+
 [pull]
-	ff = only
-	grebase = true
+  ff = only
+  rebase = true
+
 [commit]
-	gpgsign = true
+  gpgsign = true
+
 [push]
-	default = current
-    followTags = true
+  default = current
+  followTags = true
+  autoSetupRemote = true
+
 [merge]
-    # Include summaries of merged commits in newly created merge commit messages
-	log = true
+  log = true
+  conflictStyle = zdiff3
+
 [credential]
-	helper = osxkeychain
-[inti]
-	defaultBranch = main
+  helper = osxkeychain
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
 [rebase]
-	autoStash = true
+  autoStash = true
+
 [alias]
-	enforce = push --force-with-lease
+  enforce = push --force-with-lease
+  hs = log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=relative --date-order
+  logline = log --graph --pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset’ --abbrev-commit
+
 [gpg]
-	program = /usr/local/bin/gpg
+  program = /usr/local/bin/gpg
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  dark = true

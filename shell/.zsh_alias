@@ -25,10 +25,9 @@ alias mockserver='run_mock_server 9000'
 
 # Shortcuts
 alias reloadshell="source $HOME/.zshrc"
-alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
-alias ll="ls -alhFGP"
+alias ll="lsd -alF"
 
 ## Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -40,12 +39,11 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 ## flush the DNS cache
 alias flush="dscacheutil -flushcache"
+alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
 alias cht="sh ~/cht.sh"
 
 ## Programs
-alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
-alias brave='open -a "Brave Browser.app"'
 alias vim='nvim'
 
 ## Node
@@ -70,6 +68,7 @@ alias stash="git stash -u"
 alias unstage="git restore --staged ."
 alias wip="commit wip"
 alias yolo="git add . && git commit --amend --no-edit --no-verify && git push --force-with-lease"
+alias sts="git status"
 
 
 ## Remove zsh duf alias

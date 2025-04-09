@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local nvim_lsp = require'lspconfig'
 
 lsp.preset("recommended")
 
@@ -6,6 +7,7 @@ lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'eslint',
+  'php',
 })
 
 -- Fix Undefined global 'vim'
@@ -51,6 +53,7 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+nvim_lsp.phpactor.setup{}
 
 vim.diagnostic.config({
     virtual_text = true

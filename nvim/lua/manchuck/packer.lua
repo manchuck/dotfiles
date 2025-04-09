@@ -116,7 +116,6 @@ return require('packer').startup({function(use)
                 }
             }
         }
-
     end,
   }
 
@@ -254,37 +253,25 @@ return require('packer').startup({function(use)
     },
   }
 
-  -- Neotest
+  -- Mini icons
+  use { 'echasnovski/mini.nvim' }
+
+  -- treesitter
   use {
-    "nvim-neotest/neotest",
-    requires = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter"
-    }
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
   }
-  -- Neotest Jest
-  use({
-    'nvim-neotest/neotest',
-    requires = {
-      'nvim-neotest/neotest-jest',
-    },
-    config = function()
-      require('neotest').setup({
-        adapters = {
-          require('neotest-jest')({
-            jestCommand = "npm test --",
-            jestConfigFile = "custom.jest.config.ts",
-            env = { CI = true },
-            cwd = function(path)
-              return vim.fn.getcwd()
-            end,
-          }),
-        }
-      })
-    end
-  })
+
+  -- PHPCS
+  use {
+    'praem90/nvim-phpcsf',
+  }
+
+  -- PHP
+  use { 'tree-sitter/tree-sitter-php' }
+
+  -- Vim Wiki
+  use { '/vimwiki/vimwiki' }
 
 end,
 config = {
