@@ -231,11 +231,6 @@ return require('packer').startup({function(use)
     }
   })
 
-  -- Github Co Pilot
-  use ({
-  'github/copilot.vim',
-  })
-
   -- Conventional Commits
   use {'olacin/telescope-cc.nvim'}
 
