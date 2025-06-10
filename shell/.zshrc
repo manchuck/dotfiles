@@ -20,6 +20,7 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME=""
 ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -53,7 +54,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -81,7 +82,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash emotty github gitignore history jsontools node npm macos python pep8 pip pj python rsync yarn zsh-interactive-cd zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -106,64 +106,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#source $HOME/.zsh_env
-
-#source $HOME/.zsh_alias
-
-source $(brew --prefix nvm)/nvm.sh
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
-
-autoload bashcompinit && bashcompinit
-
-autoload -Uz compinit && compinit
-
-export PATH="/usr/local/opt/python@3.10/bin:$PATH"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-eval "$(pyenv virtualenv-init -)"
-eval "$(pyenv init -)"
-
-export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="/opt/homebrew/bin/python3:$PATH"
-
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
+source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_secrets
 source $HOME/.zsh_alias
 source $HOME/.zshenv
-
-#zprof
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-
-# Fig post block. Keep at the bottom of this file.
-# [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-# source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-# source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-# chruby ruby-3.1.3
-
- export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
- export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+source $HOME/.zsh-python
+source $HOME/.zsh-auto
+source $(brew --prefix nvm)/nvm.sh

@@ -1,11 +1,16 @@
-# General
 export PATH="$HOME/bin:$PATH:/usr/local/bin";
-export NVM_DIR=~/.nvm
-export PROJECT_PATHS=(~/Projects ~/Projects/vonage ~/Projects/manchuck ~/Documents/ ~/Projects/vonage/demo ~/Projects/vonage/blog)
+export NVM_DIR="$HOME/.nvm"
+export PROJECT_PATHS=(~/Projects ~/Projects/manchuck ~/Documents/ ~/Projects/vonage ~/Projects/vonage/demo ~/Projects/vonage/blog ~/Projects/vonage/talks )
 export TZ=America/New_York
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PYENV_ROOT="/Users/manchuck/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 export WALK_EDITOR='nvim'
-. "$HOME/.cargo/env"
+export PATH="$HOME/.serverless/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+if [[ -d "/opt/homebrew/opt/llvm/" ]] ; then
+  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+fi
