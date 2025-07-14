@@ -115,6 +115,14 @@ return {
       on_attach = on_attach,
     })
 
+    lspconfig["jsonls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      init_options = {
+        provideFormatter = true,
+      },
+    })
+
     lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,

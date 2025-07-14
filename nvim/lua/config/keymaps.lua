@@ -3,3 +3,4 @@
 -- Add any additional keymaps here
 vim.keymap.del({ "n" }, "<S-l>")
 vim.keymap.del({ "n" }, "<S-h>")
+vim.keymap.del({ "i" }, "<CR>")
