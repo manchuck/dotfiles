@@ -45,6 +45,7 @@ alias cht="sh ~/cht.sh"
 
 ## Programs
 alias vim='nvim'
+alias vi='nvim'
 
 ## Node
 alias ncu="npx npm-check-updates"
