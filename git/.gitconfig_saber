@@ -1,6 +1,0 @@
-[user]
-	name = Chuck "MANCHUCK" Reeves
-	email = chuck.reeves@saberastro.com
-	signingkey = A552D237214FF61E 
-[core]
-	excludesFile = ~/.gitignore
