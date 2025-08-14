@@ -83,24 +83,18 @@ return {
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
+    ---------------------------------------------------------------------------
+    -- Web: HTML/CSS/Tailwind/Emmet/ESLint
+    ---------------------------------------------------------------------------
 
     -- configure html server
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    lspconfig.html.setup({ capabilities = capabilities, on_attach = on_attach })
 
     -- configure css server
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    lspconfig.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
 
     -- configure tailwindcss server
-    lspconfig["tailwindcss"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
 
     -- configure emmet language server
     lspconfig["emmet_language_server"].setup({
@@ -109,51 +103,164 @@ return {
       filetypes = { "php", "vue", "css", "html", "javascript", "ts_ls", "less", "sass", "scss" },
     })
 
-    lspconfig["phpactor"].setup({
+    -- ESLint (for JS/TS/HTML/etc.)
+    lspconfig.eslint.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    lspconfig["intelephense"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("format_js_ts_on_save", { clear = true }),
+      pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+      callback = function(args)
+        vim.lsp.buf.format({
+          bufnr = args.buf,
+          async = false,
+          timeout_ms = 2000,
+        })
+      end,
     })
 
-    lspconfig["volar"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.api.nvim_create_autocmd("InsertLeave", {
+      group = vim.api.nvim_create_augroup("format_js_ts_on_save", { clear = true }),
+      pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+      callback = function(args)
+        vim.lsp.buf.format({
+          bufnr = args.buf,
+          async = false,
+          timeout_ms = 2000,
+        })
+      end,
     })
 
-    lspconfig["jsonls"].setup({
+    ---------------------------------------------------------------------------
+    -- JSON with SchemaStore
+    ---------------------------------------------------------------------------
+    lspconfig.jsonls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      init_options = {
-        provideFormatter = true,
-      },
-    })
-
-    lspconfig["ts_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      init_options = {
-        plugins = {
-          {
-            name = "@vue/typescript-plugin",
-            location = vue_language_server_path,
-            languages = { "vue" },
-          },
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
         },
       },
-      filetypes = {
-        "javascript",
-        "typescript",
-        "javascriptreact",
-        "typescriptreact",
-        "vue",
+    })
+
+    -- Helper function to format with jsonls only
+    local function lsp_fmt_json(buf)
+      vim.lsp.buf.format({
+        bufnr = buf,
+        async = false,
+        timeout_ms = 2000,
+        filter = function(client)
+          return client.name == "jsonls"
+        end,
+      })
+    end
+
+    -- Format JSON on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("json_lsp_format_on_save", { clear = true }),
+      pattern = { "*.json", "*.jsonc" },
+      callback = function(args)
+        lsp_fmt_json(args.buf)
+      end,
+    })
+
+    -- Format JSON when leaving insert mode (with a small debounce to avoid jitter)
+    vim.api.nvim_create_autocmd("InsertLeave", {
+      group = vim.api.nvim_create_augroup("json_lsp_format_on_insertleave", { clear = true }),
+      pattern = { "*.json", "*.jsonc" },
+      callback = function(args)
+        local key = "json_lsp_timer"
+        local t = vim.b[key]
+        if t then
+          t:stop()
+          t:close()
+        end
+        t = vim.loop.new_timer()
+        vim.b[key] = t
+        t:start(150, 0, function()
+          vim.schedule(function()
+            if vim.api.nvim_buf_is_valid(args.buf) then
+              lsp_fmt_json(args.buf)
+            end
+          end)
+        end)
+      end,
+    })
+
+    ---------------------------------------------------------------------------
+    -- TypeScript / JavaScript / Node via vtsls (recommended over tsserver)
+    ---------------------------------------------------------------------------
+    lspconfig.vtsls.setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+
+        -- Run ESLint fix when leaving insert mode
+        vim.api.nvim_create_autocmd("InsertLeave", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+
+        -- Run ESlint fix when writing the file
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
+      settings = {
+        vtsls = { tsserver = { globalPlugins = {} } },
+        typescript = {
+          preferences = { importModuleSpecifier = "non-relative" },
+          inlayHints = { includeInlayParameterNameHints = "all" },
+        },
+        javascript = {
+          inlayHints = { includeInlayParameterNameHints = "all" },
+        },
+      },
+      -- You can include Vue in filetypes if needed, but Volar handles Vue better.
+      filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    })
+
+    ---------------------------------------------------------------------------
+    -- PHP (pick ONE: phpactor OR intelephense)
+    ---------------------------------------------------------------------------
+
+    lspconfig.phpactor.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    ---------------------------------------------------------------------------
+    -- Python: basedpyright (or pyright) + ruff_lsp
+    ---------------------------------------------------------------------------
+    lspconfig.basedpyright.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        python = { analysis = { typeCheckingMode = "standard" } },
       },
     })
 
-    -- configure lua server (with special settings)
+    lspconfig.ruff_lsp.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    ---------------------------------------------------------------------------
+    -- Bash
+    ---------------------------------------------------------------------------
+    lspconfig.bashls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    ---------------------------------------------------------------------------
+    -- Lua
+    ---------------------------------------------------------------------------
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
