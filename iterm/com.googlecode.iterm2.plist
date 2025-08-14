@@ -4,6 +4,8 @@
 <dict>
 	<key>AllowClipboardAccess</key>
 	<true/>
+	<key>ChaseAnchoredScreen</key>
+	<false/>
 	<key>Command</key>
 	<string></string>
 	<key>Custom Color Presets</key>
@@ -366,13 +368,17 @@
 	<key>Default Bookmark Guid</key>
 	<string>25A307AD-62E9-49AE-BABD-8619BCDA4561</string>
 	<key>EnableAPIServer</key>
-	<true/>
+	<false/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
 	<integer>4</integer>
+	<key>NeverWarnAboutShortLivedSessions_25A307AD-62E9-49AE-BABD-8619BCDA4561</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_25A307AD-62E9-49AE-BABD-8619BCDA4561_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1276,6 +1282,8 @@
 			<false/>
 			<key>Draw Powerline Glyphs</key>
 			<true/>
+			<key>Enable Triggers in Interactive Apps</key>
+			<false/>
 			<key>Faint Text Alpha (Dark)</key>
 			<real>0.5</real>
 			<key>Faint Text Alpha (Light)</key>
@@ -2012,7 +2020,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Title Components</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
@@ -3569,6 +3577,8 @@
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>SupportREPCode</key>
+	<false/>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
 	<key>TmuxUsesDedicatedProfile</key>
@@ -3577,9 +3587,13 @@
 	<array>
 		<string>Recent Directories</string>
 	</array>
+	<key>UseMetal</key>
+	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
+	<key>metalMaximizeThroughput</key>
+	<false/>
 </dict>
 </plist>

@@ -5,6 +5,15 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
+  opts = {
+    format = {
+      enable = true,
+      defaultConfig = {
+        indent_style = "space",
+        indent_size = "2",
+      },
+    },
+  },
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")

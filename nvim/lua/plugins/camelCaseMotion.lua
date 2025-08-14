@@ -1,5 +1,5 @@
 return {
   {
-    "bkad/CamelCaseMotion",
+    "chrisgrieser/nvim-spider",
   },
 }

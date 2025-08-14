@@ -1,6 +1,6 @@
 export PATH="$HOME/bin:$PATH:/usr/local/bin";
 export NVM_DIR="$HOME/.nvm"
-export PROJECT_PATHS=(~/Projects/ ~/Projects/vonage/SDK ~/Projects/vonage/demo ~/Projects/vonage/snippets ~/Projects/vonage/tools ~/Projects/vonage/content/blog ~/Projects/vonage/talks ~/Projects/vonage/content ~/Projects/vonage/SDK)
+export PROJECT_PATHS=(~/Projects/ ~/Projects/vonage ~/Projects/vonage/sdkProjects/vonage/demo ~/Projects/vonage/snippets ~/Projects/vonage/tools ~/Projects/vonage/content/blog ~/Projects/vonage/talks ~/Projects/vonage/content ~/Projects/vonage/SDK)
 export TZ=America/New_York
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
