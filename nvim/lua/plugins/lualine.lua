@@ -55,6 +55,22 @@ return {
         theme = my_lualine_theme,
       },
       sections = {
+        lualine_c = {
+          {
+            "filename",
+            path = 1, -- 0 = name, 1 = relative, 2 = absolute
+            file_status = true, -- [+] modified, [-] readonly, etc.
+            newfile = true, -- show [New] for new files
+            symbols = {
+              modified = " [+]",
+              readonly = " [RO]",
+              unnamed = "[No Name]",
+              newfile = "[New]",
+            },
+            -- prevent aggressive truncation of the path
+            shorting_target = 0,
+          },
+        },
         lualine_x = {
           {
             lazy_status.updates,
