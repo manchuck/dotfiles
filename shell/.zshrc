@@ -1,15 +1,27 @@
+# Profiling 
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zmodload zsh/zprof
+  zprof
+
+fi
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_COMPFIX="true"
+
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-#zmodload zsh/zprof
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+#[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+#
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -80,9 +92,33 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aliases autoenv aws brew colorize common-aliases composer copypath copyfile cp dash emotty github gitignore history jsontools node npm macos pj python rsync yarn zsh-interactive-cd )
-
-
+plugins=(
+  git
+  aliases
+  autoenv
+  aws
+  brew
+  colorize
+  common-aliases
+  composer
+  copyfile
+  cp
+  dash
+  emotty
+  github
+  gitignore
+  history
+  jsontools
+  node
+  npm
+  macos
+  pj
+  python
+  rsync
+  yarn
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 # User configuration
 
 # You may need to manually set your language environment
@@ -110,14 +146,17 @@ plugins=(git aliases autoenv aws brew colorize common-aliases composer copypath 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_secrets
 source $HOME/.zsh_alias
 source $HOME/.zshenv
-source $HOME/.zsh-python
 source $HOME/.zsh-auto
 source $(brew --prefix nvm)/nvm.sh
 # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Created by `pipx` on 2025-07-15 12:00:16
 export PATH="$PATH:/Users/creeves/.local/bin"
+
