@@ -79,6 +79,10 @@ return {
     },
 
     config = function(_, opts)
+
+      ---------------------------------------------------------------------------
+      -- Blade
+      ---------------------------------------------------------------------------
       -- See tree-sitter-blade discussions for info on how to set this up
       -- https://github.com/EmranMR/tree-sitter-blade/discussions/19#discussioncomment-9800880
       local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
@@ -92,12 +96,28 @@ return {
         filetype = "blade",
       }
 
+      ---------------------------------------------------------------------------
+      -- Handlebars
+      ---------------------------------------------------------------------------
+      parser_config.twig = {
+        install_info = {
+          url = "https://github.com/eirabben/tree-sitter-twig",
+          files = { "src/parser.c" },
+          branch = "main",
+        },
+        filetype = "twig",
+      }
+
       vim.filetype.add({
         pattern = {
           [".*%.blade%.php"] = "blade",
         },
+        extension = {
+          hbs = "hbs",
+          handlebars = "hbs",
+          twig = "twig",
+        },
       })
-
       require("nvim-treesitter.configs").setup(opts)
     end,
   },

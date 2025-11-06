@@ -31,8 +31,8 @@ return {
         "emmet_language_server",
         "phpactor",
         "volar",
-        "intelephense",
         "ts_ls",
+        "prettierd",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
