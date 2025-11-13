@@ -116,6 +116,24 @@ return {
     })
 
     ---------------------------------------------------------------------------
+    -- YAML
+    ---------------------------------------------------------------------------
+    lspconfig.yamlls.setup{
+      settings = {
+        yaml = {
+          format = {
+            enable = true,
+            singleQuote = true,
+            bracketSpacing = true
+          },
+          validate = true,
+          hover = true,
+          completion = true,
+        }
+      }
+    }
+
+    ---------------------------------------------------------------------------
     -- JSON with SchemaStore
     ---------------------------------------------------------------------------
     lspconfig.jsonls.setup({
