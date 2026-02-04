@@ -119,12 +119,19 @@ return {
     -- YAML
     ---------------------------------------------------------------------------
     lspconfig.yamlls.setup{
+      on_attach = on_attach,
+      capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
       settings = {
         yaml = {
           format = {
             enable = true,
             singleQuote = true,
-            bracketSpacing = true
+            bracketSpacing = true,
+            proseWrap = true,
+          },
+          schemas = {
+            ["https://www.schemastore.org/openapi-3.X.json"]= "/Users/creeves/Projects/vonage/api/api-specification/*",
+            ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
           },
           validate = true,
           hover = true,

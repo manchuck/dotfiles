@@ -1,3 +1,4 @@
+
 return {
   "mason-org/mason.nvim",
   dependencies = {
@@ -32,7 +33,7 @@ return {
         "phpactor",
         "volar",
         "ts_ls",
-        "prettierd",
+        "yamlls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

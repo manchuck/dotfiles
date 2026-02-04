@@ -40,7 +40,7 @@
   conflictStyle = zdiff3
 
 [credential]
-  helper = osxkeychain
+	helper = store --file ~/.my-credentials
 
 [init]
   defaultBranch = main
@@ -49,9 +49,29 @@
   autoStash = true
 
 [alias]
+  # force push with a lease
   enforce = push --force-with-lease
   hs = log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=relative --date-order
   logline = log --graph --pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset’ --abbrev-commit
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  visual = !gitk
+  
+  # The real game changers
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  
+  # Undo last commit but keep changes
+  soft = reset --soft HEAD~1
+  
+  # Interactive rebase last 3 commits
+  rb3 = rebase -i HEAD~3
+  
+  # Push current branch
+  pc = push origin HEAD
 
 [gpg]
   program = /usr/local/bin/gpg
