@@ -21,7 +21,7 @@ return {
         "phpdoc",
         "markdown",
         "markdown_inline",
-        "php_only",
+        "php",
         "blade",
         "typescript",
       },
