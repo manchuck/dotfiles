@@ -31,8 +31,8 @@ export ZSH=$HOME/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME=""
-ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -116,8 +116,6 @@ plugins=(
   python
   rsync
   yarn
-  zsh-autosuggestions
-  zsh-syntax-highlighting
 )
 # User configuration
 
@@ -155,8 +153,6 @@ source $HOME/.zsh_alias
 source $HOME/.zshenv
 source $HOME/.zsh-auto
 source $(brew --prefix nvm)/nvm.sh
-# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Created by `pipx` on 2025-07-15 12:00:16
 export PATH="$PATH:/Users/creeves/.local/bin"
-
