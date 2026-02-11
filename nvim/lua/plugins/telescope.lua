@@ -42,6 +42,9 @@ return {
       keymap.set("n", "<leader>sc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
       keymap.set("n", "<leader>sp", "<cmd>Telescope pickers<cr>", { desc = "Open telescope pickers" })
       keymap.set("n", "<leader>sr", "<cmd>Telescope resume<cr>", { desc = "Resume last grep" })
+      
+      -- Diagnostics with no preview by default
+      keymap.set("n", "<leader>sD", "<cmd>Telescope diagnostics previewer=false<cr>", { desc = "Show diagnostics (no preview)" })
     end,
   },
   {

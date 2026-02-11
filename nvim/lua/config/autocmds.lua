@@ -8,7 +8,7 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "javascript", "typescript", "typescriptreact", "javascriptreact", "php", "json" },
+  pattern = { "javascript", "typescript", "typescriptreact", "javascriptreact", "json" },
   callback = function()
     vim.opt_local.indentexpr = ""
 
