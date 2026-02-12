@@ -1,3 +1,5 @@
+if true then return {} end
+
 return {
   "phpactor/phpactor",
   build = "composer install --no-dev --optimize-autoloader",
@@ -19,7 +21,7 @@ return {
     -- Phpactor configuration
     vim.g.phpactorOmniError = true
     vim.g.phpactorCompletionIgnoreCase = 0
-    
+
     -- Don't conflict with LSP completion
     vim.g.phpactorUseOpenWindows = 1
   end

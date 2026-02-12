@@ -6,7 +6,7 @@
 -- LazyVim Behavior
 -------------------------------------------------------------------------------
 -- Set LazyVim's picker UI to Telescope
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
 
 -------------------------------------------------------------------------------
 -- UI / Display
@@ -89,5 +89,4 @@ vim.opt.updatetime = 50
 -- Clipboard
 -------------------------------------------------------------------------------
 -- Don't sync Neovim's unnamed register with the system clipboard by default
--- (you can still use "+ and "* registers explicitly)
 vim.opt.clipboard = ""
