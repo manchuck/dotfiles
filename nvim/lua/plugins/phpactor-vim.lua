@@ -1,5 +1,3 @@
-if true then return {} end
-
 return {
   "phpactor/phpactor",
   build = "composer install --no-dev --optimize-autoloader",
