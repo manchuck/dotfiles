@@ -1,56 +1,224 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+
 format = """
 $directory\
-[](fg:#394260 bg:#212736)\
 $git_branch\
 $git_status\
-[](fg:#212736 bg:#1d2230)\
 $nodejs\
 $rust\
-$golang\
 $php\
-[ ](fg:#1d2230)\
+$battery\
 \n$character"""
 
-[directory]
-style = "fg:#769ff0 bg:#394260"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+[aws]
+symbol = " "
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+[buf]
+symbol = " "
+
+[bun]
+symbol = " "
+
+[battery]
+full_symbol = '🔋 '
+charging_symbol = '⚡️ '
+discharging_symbol = '💀 '
+
+[[battery.display]]
+threshold = 10
+
+[c]
+symbol = " "
+
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[deno]
+symbol = " "
+
+[directory]
+read_only = " 󰌾"
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fortran]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[gcloud]
+symbol = " "
 
 [git_branch]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#212736)]($style)'
+symbol = " "
 
-[git_status]
-style = "bg:#212736"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#212736)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#1d2230"
-format = '[[ $symbol ($version) ](fg:#a0a9cb bg:#1d2230)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#1d2230"
-format = '[[ $symbol ($version) ](fg:#a0a9cb bg:#1d2230)]($style)'
+[git_commit]
+tag_symbol = '  '
 
 [golang]
-symbol = ""
-style = "bg:#1d2230"
-format = '[[ $symbol ($version) ](fg:#a0a9cb bg:#1d2230)]($style)'
+symbol = " "
+
+[gradle]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Elementary = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Ios = "󰀷 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+Zorin = " "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
 
 [php]
-symbol = ""
-style = "bg:#1d2230"
-format = '[[ $symbol ($version) ](fg:#a0a9cb bg:#1d2230)]($style)'
+symbol = " "
 
+[pijul_channel]
+symbol = " "
+
+[pixi]
+symbol = "󰏗 "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[status]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[xmake]
+symbol = " "
+
+[zig]
+symbol = " "
