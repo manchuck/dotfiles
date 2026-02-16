@@ -4,8 +4,6 @@
 <dict>
 	<key>AllowClipboardAccess</key>
 	<true/>
-	<key>ChaseAnchoredScreen</key>
-	<false/>
 	<key>Command</key>
 	<string></string>
 	<key>Custom Color Presets</key>
@@ -368,17 +366,13 @@
 	<key>Default Bookmark Guid</key>
 	<string>25A307AD-62E9-49AE-BABD-8619BCDA4561</string>
 	<key>EnableAPIServer</key>
-	<false/>
+	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
 	<integer>4</integer>
-	<key>NeverWarnAboutShortLivedSessions_25A307AD-62E9-49AE-BABD-8619BCDA4561</key>
-	<true/>
-	<key>NeverWarnAboutShortLivedSessions_25A307AD-62E9-49AE-BABD-8619BCDA4561_selection</key>
-	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1279,11 +1273,9 @@
 			<key>Description</key>
 			<string>Default</string>
 			<key>Disable Window Resizing</key>
-			<false/>
+			<true/>
 			<key>Draw Powerline Glyphs</key>
 			<true/>
-			<key>Enable Triggers in Interactive Apps</key>
-			<false/>
 			<key>Faint Text Alpha (Dark)</key>
 			<real>0.5</real>
 			<key>Faint Text Alpha (Light)</key>
@@ -1814,19 +1806,6 @@
 				<real>0.8916594386100769</real>
 				<key>Red Component</key>
 				<real>0.87367779016494751</real>
-			</dict>
-			<key>Match Background Color</key>
-			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
-				<key>Blue Component</key>
-				<real>0.32116127014160156</real>
-				<key>Color Space</key>
-				<string>P3</string>
-				<key>Green Component</key>
-				<real>0.98600882291793823</real>
-				<key>Red Component</key>
-				<real>0.99697142839431763</real>
 			</dict>
 			<key>Match Background Color (Dark)</key>
 			<dict>
@@ -3577,23 +3556,15 @@
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
-	<key>SupportREPCode</key>
-	<false/>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
-	<key>TmuxUsesDedicatedProfile</key>
-	<false/>
 	<key>ToolbeltTools</key>
 	<array>
 		<string>Recent Directories</string>
 	</array>
-	<key>UseMetal</key>
-	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
-	<key>metalMaximizeThroughput</key>
-	<false/>
 </dict>
 </plist>
