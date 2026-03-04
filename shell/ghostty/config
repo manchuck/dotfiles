@@ -47,8 +47,38 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
+shell-integration = zsh
 font-family ="MesloLGS Nerd Font Mono"
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
-background = "#2E3440"
+
+theme = Nord
+
+window-inherit-font-size = true
+window-save-state = always
+
+keybind = global:cmd+backquote=toggle_quick_terminal
+
+# ── Splits (tmux panes equivalent) ────────────────────────────────
+keybind = ctrl+ >\=new_split:right
+keybind = ctrl+ >-=new_split:down
+
+keybind = ctrl+ >h=goto_split:left
+keybind = ctrl+ >j=goto_split:down
+keybind = ctrl+ >k=goto_split:up
+keybind = ctrl+ >l=goto_split:right
+
+keybind = ctrl+ >s>e=equalize_splits
+keybind = ctrl+ >s>h=resize_split:left,100
+keybind = ctrl+ >s>j=resize_split:down,100
+keybind = ctrl+ >s>k=resize_split:up,100
+keybind = ctrl+ >s>l=resize_split:right,100
+
+# ── Tabs (tmux windows equivalent) ────────────────────────────────
+
+keybind = ctrl+ >c=new_tab
+keybind = ctrl+ >n=next_tab
+keybind = ctrl+ >p=previous_tab
+keybind = ctrl+ >f=toggle_fullscreen
+
