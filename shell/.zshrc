@@ -156,3 +156,4 @@ source $(brew --prefix nvm)/nvm.sh
 
 # Created by `pipx` on 2025-07-15 12:00:16
 export PATH="$PATH:/Users/creeves/.local/bin"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

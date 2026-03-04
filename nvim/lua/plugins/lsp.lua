@@ -12,7 +12,7 @@ return {
           settings = {
             yaml = {
               schemas = {
-                ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"] = "/*",
+                ["https://www.schemastore.org/openapi-3.X.json"] = "/*",
               },
             },
           },
