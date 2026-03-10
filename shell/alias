@@ -1,24 +1,21 @@
-function run_mock_server(){
-    local port="$1"
-    local usage=$(cat <<-END
+#!/usr/bin/env bash
+function run_mock_server() {
+  local port="$1"
+  local usage=$(
+    cat <<-END
     Running mock server in the background always responding with 200.
     More info: https://fabianlee.org/2016/09/26/ubuntu-simulating-a-web-server-using-netcat/
     Test:
         $ curl localhost:${port}
         > 200 Tue 22 Oct 2019 19:38:57 BST
-    To exit the program:
-    1. Press 'ctrl+z' (linux) or 'control+z' (mac) which puts the job in the backround.
-    2. Print all jobs and kill the loop:
-         $ jobs
-         $ kill %1
     Listening on localhost:${port}...
 
 END
-)
-    echo -e "${usage}"
-    while true; do
-      echo -e "HTTP/1.1 200 OK\n\n200 $(date)" | nc -l localhost ${port};
-    done
+  )
+  echo -e "${usage}"
+  while true; do
+    echo -e "HTTP/1.1 200 OK\n\n200 $(date)" | nc -l localhost ${port}
+  done
 }
 
 alias mockserver='run_mock_server 9000'
@@ -29,26 +26,28 @@ alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
 alias ll="lsd -alF"
 
-## Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  ## Show/hide hidden files in Finder
+  alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+  alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
-## Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+  ## Hide/show all desktop icons (useful when presenting)
+  alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+  alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-## flush the DNS cache
-alias flush="dscacheutil -flushcache"
-alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+  ## flush the DNS cache
+  alias flush="dscacheutil -flushcache"
+  alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+fi
 
-alias cht="sh ~/cht.sh"
-
-## Programs
+# Programs
 alias vim='nvim'
 alias vi='nvim'
+alias nv="nvim"
 
 ## Node
 alias ncu="npx npm-check-updates"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 ## Python
 alias penv='python3 -m venv venv'
@@ -67,11 +66,6 @@ alias push="git push"
 alias resolve="git add . && git commit --no-edit"
 alias stash="git stash -u"
 alias unstage="git restore --staged ."
-alias wip="commit wip"
+alias wip="commit wip --no-verify"
 alias yolo="git add . && git commit --amend --no-edit --no-verify && git push --force-with-lease"
 alias sts="git status"
-alias nv="nvim"
-
-
-## Remove zsh duf alias
-# unalias duf
