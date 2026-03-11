@@ -55,11 +55,17 @@ font-feature = -dlig
 
 theme = Nord
 unfocused-split-opacity=1
+fullscreen = non-native
 
 window-inherit-font-size = true
 window-save-state = always
 
 keybind = global:cmd+backquote=toggle_quick_terminal
+quick-terminal-size = 50%,500px
+quick-terminal-position = right
+macos-icon = xray
+
+keybind = super+k=toggle_command_palette
 
 # ── Splits (tmux panes equivalent) ────────────────────────────────
 keybind = ctrl+ >\=new_split:right
